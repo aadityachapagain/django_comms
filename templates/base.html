@@ -1,0 +1,32 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Django Boards{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3-colors-flat.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3-colors-metro.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+<nav class="w3-card-4">
+    <div class="w3-bar w3-border w3-metro-darken">
+        <span class="w3-bar-item w3-margin-left w3-padding-16 w3-block"></span>
+        <a href="{% url 'home' %}" class="navbar-brand w3-bar-item w3-padding-small"><h3><b>Django Boards</b></h3></a>
+
+</div>
+</nav>
+<div class="w3-container w3-panel">
+    <div class="w3-row">
+        <div class="w3-col w3-container m2 l2"></div>
+        <div class="w3-col m8 l8">
+            <div class="w3-panel w3-light-gray">
+                {% block header %} {% endblock %}
+            </div>
+            {% block content %} {% endblock %}
+        </div>
+        <div class="w3-col w3-container m2 l2"></div>
+    </div>
+</div>
+</body>
+</html>

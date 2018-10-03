@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h4><b><a class="w3-text-blue" href="{% url 'home' %}"> Boards</a></b> / <span class="w3-text-gray">{{ board.name }}</span></h4>
+{% endblock %}
+
+{% block content %}
+    <div class="w3-padding-16">
+        <a href="{% url 'new_topic' board.pk %}" class="w3-btn w3-blue w3-round">New Topic</a>
+    </div>
+    <div class="w3-container w3-block w3-padding-small"></div>
+    <table class="w3-table w3-striped w3-border">
+            <thead class="w3-dark-gray">
+            <tr>
+                <th>Topic</th>
+                <th>Starter</th>
+                <th>Replies</th>
+                <th>Views</th>
+                <th>Last Update</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for topic in board.topics.all %}
+            <tr>
+                <td>{{ topic.subject }}</td>
+                <td>{{ topic.starter.username }}</td>
+                <td>0</td>
+                <td>0</td>
+                <td>{{ topic.last_updated }}</td>
+            </tr>
+            {%  endfor %}
+            </tbody>
+    </table>
+{% endblock %}

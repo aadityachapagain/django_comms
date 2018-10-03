@@ -1,0 +1,32 @@
+{% load widget_tweaks %}
+
+<div class="w3-container w3-padding-16 w3-panel">
+      {% for field in form %}
+          <div class="w3-panel w3-padding-16">
+          {{ field.label_tag }}
+
+          {% if form.is_bound %}
+            {% if field.errors %}
+
+                {% render_field field class="w3-input w3-border w3-border-red" %}
+                {% for error in field.errors %}
+                    <small class="w3-text-red">
+                    {{ error }}
+                    </small>
+                {% endfor %}
+            {% else %}
+                {% render_field field class="w3-input w3-border w3-border-blue" %}
+            {% endif %}
+          {% else %}
+            {% render_field field class="w3-input" %}
+          {% endif %}
+          {% if field.help_text %}
+              <div class="w3-block">
+          <small class="w3-text-gray">
+            {{ field.help_text }}
+          </small>
+              </div>
+            {% endif %}
+          </div>
+      {% endfor %}
+    </div>

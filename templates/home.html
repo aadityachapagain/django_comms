@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h4 class="w3-text-gray">Boards</h4>
+{% endblock %}
+
+{% block content %}
+    <table class="w3-table w3-striped w3-border">
+            <thead class="w3-dark-gray">
+            <tr>
+                <th>Board</th>
+                <th>Posts</th>
+                <th>Topics</th>
+                <th>Last Post</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for board in boards %}
+            <tr>
+                <td><b><a class="w3-text-blue" href="{% url 'board_topics' board.pk %}"> {{ board.name }}</a></b> <br>
+                <small style="color: #888">{{ board.description }}</small></td>
+                <td>0</td>
+                <td>0</td>
+                <td></td>
+            </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+{% endblock %}

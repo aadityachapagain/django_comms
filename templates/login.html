@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block Bar %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="w3-light-gray">
+        <h3 class="w3-margin-left">Login</h3>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {%  include 'includes/form.html' %}
+            <div class="w3-panel w3-block"></div>
+            <div class="w3-center">
+            <button  type="submit"  class="w3-btn w3-green" >Log in</button>
+                </div>
+            <div class="w3-panel w3-block"></div>
+        </form>
+    </div>
+        <div class="w3-text-dark-gray w3-center w3-padding-small">
+                New to Django Boards? <a  class="w3-text-blue" href="{% url 'signup' %}">Sign up</a>
+        </div>
+
+{% endblock %}

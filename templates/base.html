@@ -9,18 +9,33 @@
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
 </head>
 <body>
-<nav class="w3-card-4">
-    <div class="w3-bar w3-border w3-metro-darken">
-        <span class="w3-bar-item w3-margin-left w3-padding-16 w3-block"></span>
-        <a href="{% url 'home' %}" class="navbar-brand w3-bar-item w3-padding-small"><h3><b>Django Boards</b></h3></a>
-
-</div>
-</nav>
+{% block Bar %}
+    <nav class="w3-card-4">
+        <div class="w3-bar w3-border w3-metro-darken">
+            <a href="{% url 'home' %}" class="navbar-brand w3-bar-item w3-padding-small" style="margin-left:16% "><h3><b>Django Boards</b></h3></a>
+            {% if user.is_authenticated %}
+            <div class="w3-bar-tiem w3-right w3-margin-top w3-dropdown-hover" style="margin-right: 16%;" >
+                  <div class="w3-btn w3-metro-darken">{{ user.username }}</div>
+                  <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="#" class="w3-bar-item w3-button">My account</a>
+                    <a href="#" class="w3-bar-item w3-button">Change password</a>
+                    <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-border-top">Log out</a>
+                  </div>
+                </div>
+            {% else %}
+            <div class="w3-bar-item w3-right w3-margin-top" style="margin-right: 16%;">
+                <a href="{% url 'login' %}" class="w3-button w3-gray w3-border-blue w3-round">Log in</a>
+                <a href="{%  url 'signup' %}" class="w3-btn w3-blue w3-round">Sign up</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock %}
 <div class="w3-container w3-panel">
     <div class="w3-row">
         <div class="w3-col w3-container m2 l2"></div>
         <div class="w3-col m8 l8">
-            <div class="w3-panel w3-light-gray">
+            <div class="w3-panel w3-light-gray w3-text-gray">
                 {% block header %} {% endblock %}
             </div>
             {% block content %} {% endblock %}

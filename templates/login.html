@@ -9,6 +9,7 @@
         <h3 class="w3-margin-left">Login</h3>
         <form method="post" novalidate>
             {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
             {%  include 'includes/form.html' %}
             <div class="w3-panel w3-block"></div>
             <div class="w3-center">

@@ -3,3 +3,23 @@
 {% block title %}
     {{ topic.subject }}
 {% endblock %}
+
+{% block header %}
+    <h4><b>
+        <a class="w3-text-blue" href="{% url 'home' %}"> Boards</a>
+        / <a class="w3-text-blue" href="{% url 'board_topics' topic.board.pk %}"> {{ topic.board.name }}</a>
+    </b> /
+        <span class="w3-text-gray">{{ topic.subject }}</span>
+    </h4>
+{% endblock %}
+
+{% block content %}
+    <div class="w3-padding-16">
+        <a href="#" class="w3-btn w3-blue w3-round">Reply</a>
+    </div>
+
+    {% for post in topic.posts.all %}
+
+    {% endfor %}
+
+{% endblock %}
